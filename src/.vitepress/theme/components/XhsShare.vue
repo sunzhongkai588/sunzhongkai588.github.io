@@ -7,10 +7,18 @@ const copied = ref(false)
 const copiedLink = ref(false)
 
 const xhs = computed(() => frontmatter.value.xhs ?? {})
-const tags = computed(() => frontmatter.value.tags ?? [])
+const tags = computed<string[]>(() =>
+  (frontmatter.value.tags ?? []).map((tag: unknown) => String(tag).trim()).filter(Boolean)
+)
 const title = computed(() => xhs.value.title ?? frontmatter.value.title ?? page.value.title)
 const summary = computed(() => xhs.value.summary ?? frontmatter.value.description ?? '')
-const bullets = computed<string[]>(() => xhs.value.bullets ?? [])
+const bullets = computed<string[]>(() =>
+  (xhs.value.bullets ?? []).map((item: unknown) => String(item ?? '').trim()).filter(Boolean)
+)
+const cardUrl = computed(() => {
+  const slug = page.value.relativePath.split('/').at(-1)?.replace(/\.md$/, '')
+  return slug ? `/xhs-cards/${slug}.svg` : undefined
+})
 const canonicalUrl = computed(() => {
   if (xhs.value.url) return xhs.value.url
   const path = page.value.relativePath
@@ -75,6 +83,9 @@ async function copyLink() {
       <button type="button" class="xhs-share__button" @click="copyLink">
         {{ copiedLink ? '已复制链接' : '复制文章链接' }}
       </button>
+      <a v-if="cardUrl" class="xhs-share__button" :href="cardUrl" target="_blank" rel="noopener">
+        打开分享卡片
+      </a>
       <a class="xhs-share__button" :href="canonicalUrl" target="_blank" rel="noopener">打开文章</a>
     </div>
   </section>

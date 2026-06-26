@@ -33,7 +33,7 @@ export default createContentLoader('posts/*.md', {
 
 function normalizeList(raw: unknown): string[] {
   if (Array.isArray(raw)) {
-    return raw.map(String)
+    return raw.map((item) => String(item ?? '').trim()).filter(Boolean)
   }
   if (typeof raw === 'string') {
     return raw

@@ -62,7 +62,7 @@ git push
 
 ## 小红书分享流
 
-每篇文章可以在 frontmatter 里写 `xhs` 字段，并在正文里放 `<XhsShare />`。本地预览时截取竖版卡片，按钮可以复制小红书文案和具体文章链接。
+每篇文章可以在 frontmatter 里写 `xhs` 字段，并在正文里放 `<XhsShare />`。本地预览时可以打开自动生成的 4:5 分享卡片，按钮可以复制小红书文案和具体文章链接。
 
 建议工作流：
 
@@ -79,6 +79,7 @@ git push
 - `/rss.xml`: RSS 订阅
 - `/sitemap.xml`: 搜索引擎站点地图
 - `/robots.txt`: 搜索引擎抓取声明
+- `/xhs-cards/<slug>.svg`: 每篇文章的小红书分享卡片
 
 模板在 `content-templates/`：
 
