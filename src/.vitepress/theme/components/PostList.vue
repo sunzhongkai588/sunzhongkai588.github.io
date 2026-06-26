@@ -13,6 +13,7 @@ const visiblePosts = computed(() =>
 
 <template>
   <section class="post-list" aria-label="文章列表">
+    <p v-if="!visiblePosts.length" class="post-list__empty">这里暂时还没有文章。</p>
     <article v-for="post in visiblePosts" :key="post.url" class="post-row">
       <div class="post-row__date">{{ post.date.text }}</div>
       <div>

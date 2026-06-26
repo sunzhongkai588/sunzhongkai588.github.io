@@ -41,12 +41,7 @@ const checks = [
   },
   {
     file: 'posts/hello-blog.html',
-    patterns: [
-      'href="/xhs-cards/hello-blog.svg"',
-      '复制小红书文案',
-      '复制文章链接',
-      'canonical',
-    ],
+    patterns: ['href="/xhs-cards/hello-blog.svg"', '复制小红书文案', '复制文章链接', 'canonical'],
   },
   {
     file: 'xhs-cards/hello-blog.svg',

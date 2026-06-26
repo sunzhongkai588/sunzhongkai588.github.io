@@ -39,7 +39,16 @@ npm run new -- flashattention-note "FlashAttention 论文精读" papers
 npm run check
 ```
 
-这个命令会先构建站点，再检查关键产物是否生成，包括首页、栏目页、示例文章、RSS、sitemap、robots、小红书分享卡片和文章页里的分享链接。
+这个命令会先检查格式，再构建站点，并检查关键产物是否生成，包括首页、栏目页、示例文章、RSS、sitemap、robots、小红书分享卡片和文章页里的分享链接。
+
+## 格式化
+
+```bash
+npm run fmt
+npm run fmt:check
+```
+
+项目使用 Prettier 统一格式。PR 会自动运行 `npm run check`；如果 PR 分支来自当前仓库，`Format Fix` workflow 会自动执行 `npm run fmt` 并把格式化结果推回该 PR 分支。来自 fork 的 PR 只做检查，不自动推送修改。
 
 ## 发布到 GitHub Pages
 

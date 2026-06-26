@@ -25,9 +25,7 @@ const canonicalUrl = computed(() => {
     .replace(/(^|\/)index\.md$/, '$1')
     .replace(/\.md$/, '')
     .replace(/^\/+/, '')
-  return path
-    ? `https://sunzhongkai588.github.io/${path}`
-    : 'https://sunzhongkai588.github.io'
+  return path ? `https://sunzhongkai588.github.io/${path}` : 'https://sunzhongkai588.github.io'
 })
 const caption = computed(() => {
   const lines = [

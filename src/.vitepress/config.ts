@@ -26,6 +26,7 @@ export default defineConfig({
   lang: 'zh-CN',
   cleanUrls: true,
   head: [
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: siteTitle, href: '/rss.xml' }],
     ['meta', { name: 'theme-color', content: '#f7f3ea' }],
@@ -214,7 +215,9 @@ function renderSitemap(pages: PageRecord[]): string {
   const urls = pages
     .sort((a, b) => a.url.localeCompare(b.url))
     .map((page) => {
-      const lastmod = page.date ? `\n    <lastmod>${page.date.toISOString().slice(0, 10)}</lastmod>` : ''
+      const lastmod = page.date
+        ? `\n    <lastmod>${page.date.toISOString().slice(0, 10)}</lastmod>`
+        : ''
       return `  <url>
     <loc>${xmlEscape(page.url)}</loc>${lastmod}
   </url>`
@@ -241,9 +244,7 @@ async function writeXhsCards(outDir: string, pages: PageRecord[]): Promise<void>
   const cardDir = join(outDir, 'xhs-cards')
   await mkdir(cardDir, { recursive: true })
   await Promise.all(
-    posts.map((post) =>
-      writeFile(join(outDir, post.xhs.cardPath!), renderXhsCard(post), 'utf8')
-    )
+    posts.map((post) => writeFile(join(outDir, post.xhs.cardPath!), renderXhsCard(post), 'utf8'))
   )
 }
 
@@ -252,7 +253,10 @@ function renderXhsCard(post: PageRecord): string {
   const summaryLines = wrapText(post.xhs.summary || post.description, 22, 4)
   const bullets = post.xhs.bullets.length ? post.xhs.bullets : post.tags.map((tag) => `#${tag}`)
   const bulletLines = bullets.slice(0, 4).flatMap((bullet) => wrapText(`• ${bullet}`, 24, 2))
-  const tags = post.tags.slice(0, 4).map((tag) => `#${tag}`).join('  ')
+  const tags = post.tags
+    .slice(0, 4)
+    .map((tag) => `#${tag}`)
+    .join('  ')
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
   <rect width="1080" height="1350" fill="#fffdf8"/>
