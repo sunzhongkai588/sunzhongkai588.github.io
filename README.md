@@ -62,7 +62,7 @@ git push
 
 ## 小红书分享流
 
-每篇文章可以在 frontmatter 里写 `xhs` 字段，并在正文里放 `<XhsShare />`。本地预览时截取竖版卡片，按钮可以复制小红书文案。
+每篇文章可以在 frontmatter 里写 `xhs` 字段，并在正文里放 `<XhsShare />`。本地预览时截取竖版卡片，按钮可以复制小红书文案和具体文章链接。
 
 建议工作流：
 
@@ -71,6 +71,8 @@ git push
 3. 在 `xhs.summary` 里写一句话结论。
 4. 在 `xhs.bullets` 里保留三到五个要点。
 5. 本地打开文章页，截取分享卡片，复制文案后发布到小红书。
+
+站点会自动为每个页面生成 canonical、Open Graph 和 Twitter Card 元信息；微信、小红书或其他平台展示链接时，会优先使用对应文章标题和摘要。
 
 模板在 `content-templates/`：
 

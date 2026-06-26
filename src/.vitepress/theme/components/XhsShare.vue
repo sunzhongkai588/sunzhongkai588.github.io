@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 
 const { frontmatter, page } = useData()
 const copied = ref(false)
+const copiedLink = ref(false)
 
 const xhs = computed(() => frontmatter.value.xhs ?? {})
 const tags = computed(() => frontmatter.value.tags ?? [])
@@ -42,6 +43,15 @@ async function copyCaption() {
     copied.value = false
   }, 1800)
 }
+
+async function copyLink() {
+  if (!navigator?.clipboard) return
+  await navigator.clipboard.writeText(canonicalUrl.value)
+  copiedLink.value = true
+  window.setTimeout(() => {
+    copiedLink.value = false
+  }, 1800)
+}
 </script>
 
 <template>
@@ -58,8 +68,14 @@ async function copyCaption() {
       </div>
       <div class="xhs-share__url">{{ canonicalUrl }}</div>
     </div>
-    <button type="button" class="xhs-share__button" @click="copyCaption">
-      {{ copied ? '已复制' : '复制小红书文案' }}
-    </button>
+    <div class="xhs-share__actions">
+      <button type="button" class="xhs-share__button" @click="copyCaption">
+        {{ copied ? '已复制文案' : '复制小红书文案' }}
+      </button>
+      <button type="button" class="xhs-share__button" @click="copyLink">
+        {{ copiedLink ? '已复制链接' : '复制文章链接' }}
+      </button>
+      <a class="xhs-share__button" :href="canonicalUrl" target="_blank" rel="noopener">打开文章</a>
+    </div>
   </section>
 </template>

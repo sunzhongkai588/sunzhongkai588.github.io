@@ -1,18 +1,49 @@
 import { defineConfig } from 'vitepress'
 
+const siteUrl = 'https://sunzhongkai588.github.io'
+const siteTitle = 'Sun Zhongkai'
+const siteDescription = '学习笔记、论文分享和有趣发现'
+
+function pageUrl(relativePath: string): string {
+  const path = relativePath
+    .replace(/(^|\/)index\.md$/, '$1')
+    .replace(/\.md$/, '')
+    .replace(/^\/+/, '')
+
+  return path ? `${siteUrl}/${path}` : siteUrl
+}
+
 export default defineConfig({
-  title: 'Sun Zhongkai',
-  description: '学习笔记、论文分享和有趣发现',
+  title: siteTitle,
+  description: siteDescription,
   lang: 'zh-CN',
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#f7f3ea' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'Sun Zhongkai' }],
-    ['meta', { property: 'og:description', content: '学习笔记、论文分享和有趣发现' }],
-    ['meta', { property: 'og:url', content: 'https://sunzhongkai588.github.io/' }],
+    ['meta', { name: 'author', content: siteTitle }],
   ],
+  transformPageData(pageData) {
+    const url = pageUrl(pageData.relativePath)
+    const title = pageData.title ? `${pageData.title} | ${siteTitle}` : siteTitle
+    const description = pageData.description || siteDescription
+    const type = pageData.relativePath.startsWith('posts/') ? 'article' : 'website'
+
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.push(
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:type', content: type }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:site_name', content: siteTitle }],
+      ['meta', { property: 'og:image', content: `${siteUrl}/social-card.svg` }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+      ['meta', { name: 'twitter:image', content: `${siteUrl}/social-card.svg` }]
+    )
+  },
   markdown: {
     theme: {
       light: 'github-light',
