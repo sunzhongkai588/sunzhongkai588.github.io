@@ -1,4 +1,4 @@
-# Sun Zhongkai Blog
+# 孙钟恺的博客
 
 个人博客，用来记录学习笔记、论文分享和有趣发现。站点使用 VitePress，部署目标是 GitHub Pages 用户站：
 

@@ -5,7 +5,7 @@ sidebar: false
 
 # 关于
 
-我是 Sun Zhongkai。这个站点用于记录学习笔记、论文阅读、工程实践和偶然发现的有趣东西。
+我是孙钟恺。这个站点用于记录学习笔记、论文阅读、工程实践和偶然发现的有趣东西。
 
 - GitHub: [sunzhongkai588](https://github.com/sunzhongkai588)
 - 站点: [sunzhongkai588.github.io](https://sunzhongkai588.github.io)

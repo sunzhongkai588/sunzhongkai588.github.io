@@ -63,7 +63,7 @@ async function copyLink() {
 <template>
   <section class="xhs-share" aria-label="小红书分享卡片">
     <div class="xhs-share__card">
-      <div class="xhs-share__eyebrow">Sun Zhongkai Blog</div>
+      <div class="xhs-share__eyebrow">孙钟恺的博客</div>
       <h2>{{ title }}</h2>
       <p>{{ summary }}</p>
       <ul v-if="bullets.length">

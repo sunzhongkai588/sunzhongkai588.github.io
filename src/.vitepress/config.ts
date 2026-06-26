@@ -4,7 +4,7 @@ import { join, relative } from 'node:path'
 import { parse as parseYaml } from 'yaml'
 
 const siteUrl = 'https://sunzhongkai588.github.io'
-const siteTitle = 'Sun Zhongkai'
+const siteTitle = '孙钟恺'
 const siteDescription = '学习笔记、论文分享和有趣发现'
 
 function pageUrl(relativePath: string): string {
@@ -81,7 +81,7 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/sunzhongkai588' }],
     footer: {
       message: 'Built with VitePress. Published by GitHub Pages.',
-      copyright: `Copyright © 2026 Sun Zhongkai`,
+      copyright: `Copyright © 2026 孙钟恺`,
     },
   },
 })
@@ -263,7 +263,7 @@ function renderXhsCard(post: PageRecord): string {
   <rect x="60" y="64" width="960" height="1222" rx="32" fill="#f7f3ea" stroke="#d9d0bd" stroke-width="2"/>
   <circle cx="884" cy="188" r="118" fill="#0f766e" opacity=".12"/>
   <circle cx="196" cy="1120" r="148" fill="#d97706" opacity=".10"/>
-  <text x="110" y="150" fill="#0f766e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="34" font-weight="800">Sun Zhongkai Blog</text>
+  <text x="110" y="150" fill="#0f766e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="34" font-weight="800">孙钟恺的博客</text>
 ${renderTextLines(titleLines, 110, 250, 58, 74, '#16201d', 800)}
 ${renderTextLines(summaryLines, 110, 550, 36, 54, '#33413d', 500)}
 ${renderTextLines(bulletLines, 110, 800, 32, 48, '#283530', 600)}

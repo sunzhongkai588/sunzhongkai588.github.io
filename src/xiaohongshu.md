@@ -5,7 +5,7 @@ sidebar: false
 
 # 小红书分享流
 
-每篇文章的 frontmatter 都可以写 `xhs` 字段，并在正文里放一行 `<XhsShare />`。发布前在本地预览页面，截取竖版分享卡片，再点按钮复制文案。构建时还会为每篇文章生成一张 4:5 的 SVG 分享卡片，路径类似 `/xhs-cards/hello-blog.svg`。
+每篇文章的 frontmatter 都可以写 `xhs` 字段，并在正文里放一行 `<XhsShare />`。发布前在本地预览页面，截取竖版分享卡片，再点按钮复制文案。运行本地预览、构建或推送部署时，站点会为每篇文章生成一张 4:5 的 SVG 分享卡片，路径类似 `/xhs-cards/hello-blog.svg`。
 
 推荐节奏：
 

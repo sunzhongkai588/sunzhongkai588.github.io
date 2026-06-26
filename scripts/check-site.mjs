@@ -24,7 +24,7 @@ const checks = [
     file: 'rss.xml',
     patterns: [
       '<rss version="2.0"',
-      '<title>Sun Zhongkai</title>',
+      '<title>孙钟恺</title>',
       '<link>https://sunzhongkai588.github.io/posts/hello-blog</link>',
     ],
   },
@@ -47,7 +47,7 @@ const checks = [
     file: 'xhs-cards/hello-blog.svg',
     patterns: [
       'width="1080" height="1350"',
-      'Sun Zhongkai Blog',
+      '孙钟恺的博客',
       'https://sunzhongkai588.github.io/posts/hello-blog',
     ],
   },
