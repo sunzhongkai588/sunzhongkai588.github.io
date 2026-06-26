@@ -74,6 +74,12 @@ git push
 
 站点会自动为每个页面生成 canonical、Open Graph 和 Twitter Card 元信息；微信、小红书或其他平台展示链接时，会优先使用对应文章标题和摘要。
 
+构建时还会自动生成：
+
+- `/rss.xml`: RSS 订阅
+- `/sitemap.xml`: 搜索引擎站点地图
+- `/robots.txt`: 搜索引擎抓取声明
+
 模板在 `content-templates/`：
 
 - `learning-note.md`: 学习笔记模板

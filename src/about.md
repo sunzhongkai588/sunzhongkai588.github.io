@@ -9,5 +9,6 @@ sidebar: false
 
 - GitHub: [sunzhongkai588](https://github.com/sunzhongkai588)
 - 站点: [sunzhongkai588.github.io](https://sunzhongkai588.github.io)
+- RSS: [rss.xml](/rss.xml)
 
 内容组织上，我会把长文留在博客里，把更适合传播的部分整理成小红书卡片和短文案。
