@@ -10,6 +10,16 @@ const tags = computed(() => frontmatter.value.tags ?? [])
 const title = computed(() => xhs.value.title ?? frontmatter.value.title ?? page.value.title)
 const summary = computed(() => xhs.value.summary ?? frontmatter.value.description ?? '')
 const bullets = computed<string[]>(() => xhs.value.bullets ?? [])
+const canonicalUrl = computed(() => {
+  if (xhs.value.url) return xhs.value.url
+  const path = page.value.relativePath
+    .replace(/(^|\/)index\.md$/, '$1')
+    .replace(/\.md$/, '')
+    .replace(/^\/+/, '')
+  return path
+    ? `https://sunzhongkai588.github.io/${path}`
+    : 'https://sunzhongkai588.github.io'
+})
 const caption = computed(() => {
   const lines = [
     title.value,
@@ -19,7 +29,7 @@ const caption = computed(() => {
     ...bullets.value.map((item) => `- ${item}`),
     '',
     ...tags.value.map((tag: string) => `#${tag}`),
-    '阅读全文见个人博客：sunzhongkai588.github.io',
+    `阅读全文：${canonicalUrl.value}`,
   ]
   return lines.filter(Boolean).join('\n')
 })
@@ -46,7 +56,7 @@ async function copyCaption() {
       <div v-if="tags.length" class="xhs-share__tags">
         <span v-for="tag in tags" :key="tag">#{{ tag }}</span>
       </div>
-      <div class="xhs-share__url">sunzhongkai588.github.io</div>
+      <div class="xhs-share__url">{{ canonicalUrl }}</div>
     </div>
     <button type="button" class="xhs-share__button" @click="copyCaption">
       {{ copied ? '已复制' : '复制小红书文案' }}
