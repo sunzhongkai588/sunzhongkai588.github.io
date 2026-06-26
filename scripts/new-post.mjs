@@ -48,14 +48,7 @@ xhs:
 ---
 
 # ${title}
-
-## 背景
-
-## 正文
-
-## 结论
-
-## 参考
+${bodyForCategory(category)}
 
 <XhsShare />
 `
@@ -63,3 +56,57 @@ xhs:
 await mkdir(join('src', 'posts'), { recursive: true })
 await writeFile(postPath, body, 'utf8')
 console.log(`Created ${postPath}`)
+
+function bodyForCategory(category) {
+  if (category === 'papers') {
+    return `
+## 论文信息
+
+- Paper:
+- Code:
+- Authors:
+
+## 它解决什么问题
+
+## 方法直觉
+
+## 关键设计
+
+## 实验和证据
+
+## 局限
+
+## 我能用到哪里
+
+## 参考
+`
+  }
+
+  if (category === 'interesting') {
+    return `
+## 发现了什么
+
+## 为什么有意思
+
+## 可以怎么用
+
+## 后续问题
+
+## 参考
+`
+  }
+
+  return `
+## 为什么学这个
+
+## 我原本的理解
+
+## 关键概念
+
+## 过程和踩坑
+
+## 结论
+
+## 参考
+`
+}

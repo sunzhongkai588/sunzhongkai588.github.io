@@ -31,6 +31,16 @@ npm run new -- flashattention-note "FlashAttention 论文精读" papers
 - `papers`: 论文分享
 - `interesting`: 有趣发现
 
+`npm run new` 会按分类生成不同正文骨架：学习笔记会包含概念和踩坑，论文分享会包含论文信息、方法和实验，有趣发现会包含发现、用途和后续问题。
+
+## 本地检查
+
+```bash
+npm run check
+```
+
+这个命令会先构建站点，再检查关键产物是否生成，包括首页、栏目页、示例文章、RSS、sitemap、robots、小红书分享卡片和文章页里的分享链接。
+
 ## 发布到 GitHub Pages
 
 当前本地仓库已经初始化并完成首个提交，远端也已经配置为：
@@ -85,4 +95,5 @@ git push
 
 - `learning-note.md`: 学习笔记模板
 - `paper-note.md`: 论文分享模板
+- `interesting-find.md`: 有趣发现模板
 - `xhs-caption.md`: 小红书纯文案模板
